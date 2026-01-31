@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=4 uid="uid://bxx07glhnjd3m"]
+
+[ext_resource type="Texture2D" uid="uid://ck66ko2ndaiwi" path="res://Assets/Smily Square.png" id="1_khqer"]
+[ext_resource type="PackedScene" uid="uid://g12yql2ei6ao" path="res://Player.tscn" id="2_rfc6t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfc6t"]
+texture = ExtResource("1_khqer")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ihhhi"]
+tile_size = Vector2i(256, 256)
+sources/2 = SubResource("TileSetAtlasSource_rfc6t")
+
+[node name="Test World" type="Node2D"]
+
+[node name="TileMap" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_ihhhi")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_rfc6t")]
+position = Vector2(370, 279)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
