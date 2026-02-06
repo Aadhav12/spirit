@@ -25,6 +25,7 @@ tile_set = ExtResource("1_nnsk1")
 [node name="Village" type="Node2D" parent="."]
 position = Vector2(240, 0)
 script = ExtResource("3_4wyf3")
+population = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(100, 55)
