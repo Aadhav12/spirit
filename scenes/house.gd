@@ -11,6 +11,11 @@ var rectangles : Array[Array] = [[0,0,7,5], [7,0,3,2]]
 var house_position : Vector2
 var num_beds : int
 
+var bedside_tables : Array[Vector2]
+var beds : Array[Vector2]
+var carpets : Array[Vector2]
+var furniture : Array[Vector2]
+
 func _ready():
 	#for rectangle in rectangles:
 		#draw_rectangle(Vector2(rectangle[0], rectangle[1]), rectangle[2], rectangle[3])
@@ -65,6 +70,23 @@ func _ready():
 				selected_cell = y_list.pick_random()	
 		y_level = selected_cell.y
 		furniture_tilemap.set_cell(selected_cell, 0, Vector2(0,2))
+		beds.append(selected_cell)
+		furniture.append(selected_cell)
+		if selected_cell in cornerCellList and selected_cell + Vector2(1, -2) not in cellList and selected_cell + Vector2(2, -1) not in cellList:
+			furniture_tilemap.set_cell(selected_cell+Vector2(-1,0), 0, Vector2(1,2))
+			bedside_tables.append(selected_cell+Vector2(-1,0))
+			furniture.append(selected_cell+Vector2(-1,0))
+		elif selected_cell in cornerCellList and selected_cell + Vector2(-1, -2) not in cellList and selected_cell + Vector2(-2, -1) not in cellList:
+			furniture_tilemap.set_cell(selected_cell+Vector2(1,0), 0, Vector2(1,2))
+			bedside_tables.append(selected_cell+Vector2(1,0))
+			furniture.append(selected_cell+Vector2(1,0))
+		
+		if selected_cell + Vector2(0, 3) in cellList and selected_cell + Vector2(1, 3) in cellList and selected_cell + Vector2(-1, 3) in cellList:
+			var carpet_colour = randi_range(1, 2)
+			furniture_tilemap.set_cell(selected_cell+Vector2(0,1), 0, Vector2(carpet_colour,3))
+			furniture_tilemap.set_cell(selected_cell+Vector2(0,2), 0, Vector2(carpet_colour,4))
+			carpets.append(selected_cell+Vector2(0,2))
+			furniture.append(selected_cell+Vector2(0,2))
 		var toEraseList = [
 			selected_cell,
 			selected_cell + Vector2(0, -1),
@@ -77,12 +99,36 @@ func _ready():
 			selected_cell + Vector2(-1, 1),
 			selected_cell + Vector2(1, -1),
 			selected_cell + Vector2(-1, -1),
+			selected_cell + Vector2(1, -2),
+			selected_cell + Vector2(-1, -2),
 		]
 		for cell in toEraseList:
 			while cell in bedCellList:
 				bedCellList.erase(cell)
 			while cell in cornerCellList:
 				cornerCellList.erase(cell)
+	var tableOptions = []
+	for cell in cellList:
+		var cellFree = true
+		for i in range(-2, 2):
+			for j in range(-1, 2):
+				if cell + Vector2(j, i) not in cellList:
+					cellFree = false
+				if i != -2 and cell + Vector2(j, i) in furniture:
+					cellFree = false
+		if cellFree:
+			tableOptions.append(cell)
+	if tableOptions != []:
+		var cell = tableOptions.pick_random()
+		furniture_tilemap.set_cell(cell, 0, Vector2(3, 3))
+		furniture_tilemap.set_cell(cell + Vector2(0, -1), 0, Vector2(4, 3))
+		furniture.append(cell)
+		furniture.append(cell + Vector2(0, -1))
+	var doorOptions = []
+	for cell in cellList:
+		if cell + Vector2(0, 1) not in cellList and cell + Vector2(1, 0) in cellList and cell + Vector2(-1, 0) in cellList and cell + Vector2(0, -1) not in furniture:
+			doorOptions.append(cell)
+	base_tilemap.set_cell(doorOptions.pick_random(), 0, Vector2(5, 2))
 
 func draw_rectangle(rect_position: Vector2, width: int, height: int, atlasX : int):
 	for i in range(0, height):

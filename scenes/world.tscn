@@ -28,5 +28,5 @@ tile_set = ExtResource("1_nnsk1")
 [node name="Village" type="Node2D" parent="."]
 position = Vector2(240, 0)
 script = ExtResource("3_4wyf3")
-house_size = 45
-num_beds = 4
+house_size = 50
+num_beds = 8
