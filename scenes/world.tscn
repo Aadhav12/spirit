@@ -116,7 +116,7 @@ tile_set = ExtResource("1_nnsk1")
 position = Vector2(1024, 0)
 tile_set = SubResource("TileSet_qfnet")
 script = ExtResource("3_4wyf3")
-theme = -1
+school = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1029, 164)
