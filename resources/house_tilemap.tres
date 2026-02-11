@@ -128,6 +128,7 @@ texture_region_size = Vector2i(32, 32)
 4:3/0 = 0
 0:2/size_in_atlas = Vector2i(1, 2)
 0:2/0 = 0
+7:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wcq0w"]
 texture = ExtResource("2_gdj48")
