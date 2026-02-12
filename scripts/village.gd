@@ -1,9 +1,9 @@
+class_name Village
 extends TileMapLayer
 
 @export var population : int = 0
 @export var size : int = 30
 @export var beds : int = 3
-@export var school : GameData.School = GameData.School.NONE
 
 const village_hall_scene = preload("res://scenes/village_hall.tscn")
 const house_scene = preload("res://scenes/house.tscn")
@@ -13,6 +13,8 @@ var house_instance : House
 var altar_instance : Altar
 var house_generator : HouseGenerator
 var cellStatus : Dictionary
+
+var altars = {}
 
 var houses : Array[House] = []
 
@@ -32,22 +34,29 @@ func _ready():
 	for i in range(0, 9):
 		for j in range(0, 7):
 			cellStatus[Vector2i(i, j)] = 2
+	
+	
 
 func _process(delta):
 	if (Input.is_action_just_pressed("add_house")):
 		#house_instance = create_house(beds, size, Vector2i(0,0))
 		#add_child(house_instance)
-		altar_instance.create_house()
+		altar_instance.create_house(15, 1)
 		
-	if (Input.is_action_just_pressed("add_altar")):
-		add_child(create_altar())
+	#if (Input.is_action_just_pressed("add_altar")):
+		#add_child(create_altar(GameData.School.SKY))
 	
 	if (Input.is_action_just_pressed("delete_house")):
 		for cell in house_instance.data.cellList:
 			cellStatus[cell] = 0
 		house_instance.queue_free()
 
-func create_altar():
+func create_house(school : GameData.School, house_size : int, num_beds : int):
+	if not altars.has(school):
+		create_altar(school)
+	altars[school].create_house(house_size, num_beds)
+
+func create_altar(school : GameData.School):
 	var altar_radius = 15
 	altar_instance = altar_scene.instantiate()
 	var possible_cells = []
@@ -79,9 +88,10 @@ func create_altar():
 	for i in range(0, 5):
 		for j in range(0, 5):
 			altar_data.cellList.append(Vector2i(i, j))
+	altars[school] = altar_instance
 	altar_instance.data = altar_data
 	
-	return altar_instance
+	add_child(altar_instance)
 	
 func create_path(a: Vector2i, b: Vector2i):
 	var astar = AStarGrid2D.new()
@@ -106,18 +116,3 @@ func create_path(a: Vector2i, b: Vector2i):
 	
 	for cell in path:
 		cellStatus[cell] = 1
-	
-func create_house(num_beds : int, house_size : int, house_position : Vector2i):
-	var data = HouseData.new()
-	house_instance = house_scene.instantiate()
-	
-	data.cellList = house_generator.generate_cell_list(house_size)
-	data.furniture_data = house_generator.generate_furniture(data.cellList, num_beds)
-	data.school = school
-	
-	house_instance.data = data
-	
-	for cell in data.cellList:
-		cellStatus[cell + house_position] = 2
-	
-	return house_instance
