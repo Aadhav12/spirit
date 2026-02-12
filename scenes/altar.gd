@@ -4,18 +4,17 @@ extends Node2D
 @export var data : AltarData
 @export var base_tilemap : TileMapLayer
 
-@export var house_size : int
-@export var num_beds : int
-
 const house_scene = preload("res://scenes/house.tscn")
 var house_instance : House
 var house_generator : HouseGenerator
+
+var houses : Array[House]
 
 func _ready():
 	base_tilemap.set_cells_terrain_connect(data.cellList, 0, data.school)
 	house_generator = HouseGenerator.new()
 
-func create_house():
+func create_house(house_size : int, num_beds : int):
 	var house_data = HouseData.new()
 	house_instance = house_scene.instantiate()
 	
@@ -49,7 +48,7 @@ func create_house():
 	house_instance.data.position = selected
 	add_child(house_instance)
 	create_path(selected + house_instance.data.furniture_data.door + Vector2i(0, 1), Vector2i(2, 5))
-	
+	houses.append(house_instance)
 	#return house_instance
 	
 func create_path(a: Vector2i, b: Vector2i):
