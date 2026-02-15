@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://740biwpeq44x"]
+
+[ext_resource type="Texture2D" uid="uid://doh52q033xpta" path="res://assets/enemy.png" id="1_7k104"]
+[ext_resource type="Script" uid="uid://sconc0e8vc3o" path="res://scripts/node_state_machine.gd" id="3_c4w8v"]
+[ext_resource type="Script" uid="uid://bs1bif4j00s2l" path="res://scripts/enemy_walk_state.gd" id="4_5uy6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ra3w"]
+size = Vector2(81, 56)
+
+[node name="Enemy" type="CharacterBody2D"]
+
+[node name="Enemy Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.44140628, 0.42578122)
+texture = ExtResource("1_7k104")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 1)
+shape = SubResource("RectangleShape2D_4ra3w")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("3_c4w8v")
+initial_node_state = NodePath("Walk")
+
+[node name="Walk" type="Node" parent="State Machine" node_paths=PackedStringArray("character", "sprite_2D")]
+script = ExtResource("4_5uy6h")
+character = NodePath("../..")
+sprite_2D = NodePath("../../Enemy Sprite")
