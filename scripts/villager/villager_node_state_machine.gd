@@ -1,4 +1,4 @@
-class_name NodeStateMachine
+class_name VillagerNodeStateMachine
 extends Node
 
 @export var initial_node_state : NodeState
