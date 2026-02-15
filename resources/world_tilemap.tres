@@ -1,6 +1,8 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cy5fmvoe07op1"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://cy5fmvoe07op1"]
 
 [ext_resource type="Texture2D" uid="uid://bckx08nf0fdol" path="res://assets/village.png" id="1_6emkp"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6emkp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwgxs"]
 texture = ExtResource("1_6emkp")
@@ -45,6 +47,7 @@ texture_region_size = Vector2i(32, 32)
 2:1/0/terrains_peering_bit/top_left_corner = 0
 2:1/0/terrains_peering_bit/top_side = 0
 2:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_6emkp")
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0
@@ -232,9 +235,12 @@ texture_region_size = Vector2i(32, 32)
 
 [resource]
 tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Grass"
 terrain_set_0/terrain_0/color = Color(0.25371298, 0.42997956, 0.34186062, 1)
 terrain_set_0/terrain_1/name = "Sand"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_rwgxs")

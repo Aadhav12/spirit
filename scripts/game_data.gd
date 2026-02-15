@@ -7,3 +7,10 @@ enum School {
 	DEATH,
 	LOVE
 }
+
+enum VillagerLocation {
+	HOME,
+	ALTAR,
+	TOWN_HALL,
+	PATH
+}
