@@ -13,8 +13,9 @@ vertices = PackedVector2Array(2992.4531, -901.14844, 3104.5, 1438.9063, -68.8593
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-48, -963, -79, 1422, 3115, 1449, 3002, -911)])
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("village", "user_interface")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("sand_tilemap", "village", "user_interface")]
 script = ExtResource("1_rwgxs")
+sand_tilemap = NodePath("NavigationRegion2D/Sand")
 village = NodePath("NavigationRegion2D/Village")
 school = 1
 user_interface = NodePath("CanvasLayer/UserInterface")
