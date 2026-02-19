@@ -30,6 +30,11 @@ window/stretch/aspect="keep_height"
 window/stretch/scale_mode="integer"
 
 [file_customization]
+[global_group]
+
+player=""
+
+[input]
 
 folder_colors={
 "res://assets/": "pink",
