@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var sand_tilemap: TileMapLayer
 @export var village : Village
 
 @export var school : GameData.School

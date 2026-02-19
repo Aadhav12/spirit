@@ -18,6 +18,10 @@ var houses : Array[House]
 func _ready():
 	base_tilemap.set_cells_terrain_connect(data.cellList, 0, data.school)
 	base_tilemap.set_cell(data.door, data.school, Vector2i(5, 2))
+	var sand_tilemap = get_parent().get_parent().get_parent().sand_tilemap
+	
+	for cell in data.cellList:
+		sand_tilemap.set_cell(cell + Vector2i(global_position/32), 0, Vector2i(0, 1))
 	
 	for cell in data.cellList:
 		if (base_tilemap.get_cell_atlas_coords(cell) == Vector2i(3, 1)):
