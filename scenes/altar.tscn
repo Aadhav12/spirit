@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=4 uid="uid://dgpcpjehaog6p"]
+
+[ext_resource type="TileSet" uid="uid://triat48wgm6j" path="res://resources/house_tilemap.tres" id="1_hwdfh"]
+[ext_resource type="Script" uid="uid://b8poarwawh03g" path="res://scenes/altar.gd" id="2_si8oa"]
+
+[node name="Altar" type="Node2D" node_paths=PackedStringArray("base_tilemap")]
+script = ExtResource("2_si8oa")
+base_tilemap = NodePath("Base")
+
+[node name="Base" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAMAAQADAAEAAAADAAIAAQADAAEAAAADAAEAAQADAAEAAAADAAAAAQADAAAAAAACAAMAAQADAAEAAAACAAIAAQADAAEAAAACAAEAAQADAAEAAAACAAAAAQADAAAAAAABAAMAAQADAAEAAAABAAIAAQADAAEAAAABAAEAAQADAAEAAAABAAAAAQADAAAAAAAAAAMAAQACAAEAAAAAAAIAAQACAAEAAAAAAAEAAQACAAEAAAAAAAAAAQACAAAAAAAEAAQAAQAEAAIAAAAEAAMAAQAEAAEAAAAEAAIAAQAEAAEAAAAEAAEAAQAEAAEAAAAEAAAAAQAEAAAAAAADAAQAAQADAAIAAAACAAQAAQAFAAIAAAABAAQAAQADAAIAAAAAAAQAAQACAAIAAAA=")
+tile_set = ExtResource("1_hwdfh")

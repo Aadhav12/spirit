@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doh52q033xpta"
-path="res://.godot/imported/enemy.png-63f114c7bb3f2105c232c34f647cbc2d.ctex"
+uid="uid://mj5f52vow3kx"
+path="res://.godot/imported/house_ocean.png-d51fa9a868ee43c588f5ce011b6b1a5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy.png"
-dest_files=["res://.godot/imported/enemy.png-63f114c7bb3f2105c232c34f647cbc2d.ctex"]
+source_file="res://assets/house_ocean.png"
+dest_files=["res://.godot/imported/house_ocean.png-d51fa9a868ee43c588f5ce011b6b1a5e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck66ko2ndaiwi"
-path="res://.godot/imported/smily_square.png-bc04717b4007533b09d11f198bd3b4e3.ctex"
+uid="uid://ce6wekkeo27i7"
+path="res://.godot/imported/house.png-873b23dab4701b230309b6eed0085474.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/smily_square.png"
-dest_files=["res://.godot/imported/smily_square.png-bc04717b4007533b09d11f198bd3b4e3.ctex"]
+source_file="res://assets/house.png"
+dest_files=["res://.godot/imported/house.png-873b23dab4701b230309b6eed0085474.ctex"]
 
 [params]
 
