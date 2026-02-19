@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dry1mate081ph"]
+
+[ext_resource type="Texture2D" uid="uid://cue54vvjj1h1a" path="res://assets/spirits.png" id="1_jjjaa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vn76"]
+atlas = ExtResource("1_jjjaa")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcyu3"]
+atlas = ExtResource("1_jjjaa")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ihfss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vn76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcyu3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5882353)
+sprite_frames = SubResource("SpriteFrames_ihfss")
+autoplay = "default"
