@@ -43,15 +43,21 @@ func _ready():
 	for i in range(-200, 200):
 		for j in range(-200, 200):
 			cellStatus[Vector2i(i, j)] = 0
+	var sand_tilemap = get_parent().get_parent().sand_tilemap
+	
+	
 	for i in range(0, 9):
 		for j in range(0, 7):
+			sand_tilemap.set_cell(Vector2i(i, j) + Vector2i(global_position/32), 0, Vector2i(0, 1))
+
 			cellStatus[Vector2i(i, j)] = 2
 
 func buy_altar(item_data):
 	if GameData.coins >= GameData.AltarCosts[len(altars.keys())]:
-		world.user_interface.reduce_coins(GameData.AltarCosts[len(altars.keys())])
 		if item_data.type == "altar":
 			if not altars.has(GameData.spirit_names[item_data.name]):
+				GameData.shop_data['altars'].erase(item_data)
+				world.user_interface.reduce_coins(GameData.AltarCosts[len(altars.keys())])
 				create_house(GameData.spirit_names[item_data.name], 20, 2)
 				altars[GameData.spirit_names[item_data.name]].create_villager(0)
 
