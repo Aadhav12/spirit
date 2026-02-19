@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bxx07glhnjd3m"]
+[gd_scene load_steps=6 format=4 uid="uid://bxx07glhnjd3m"]
 
 [ext_resource type="Texture2D" uid="uid://ck66ko2ndaiwi" path="res://assets/smily_square.png" id="1_khqer"]
 [ext_resource type="PackedScene" uid="uid://g12yql2ei6ao" path="res://scenes/player.tscn" id="2_rfc6t"]
 [ext_resource type="PackedScene" uid="uid://740biwpeq44x" path="res://scenes/enemy.tscn" id="3_bm10e"]
-[ext_resource type="Script" uid="uid://cne8a3m5roehs" path="res://scripts/enemy_in_world.gd" id="4_hwcfx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfc6t"]
 texture = ExtResource("1_khqer")
@@ -29,8 +28,5 @@ position = Vector2(370, 279)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("enemy", "player_movement") instance=ExtResource("3_bm10e")]
-position = Vector2(134, 149)
-script = ExtResource("4_hwcfx")
-enemy = NodePath(".")
-player_movement = NodePath("../../CharacterBody2D")
+[node name="Enemy" parent="Enemies" node_paths=PackedStringArray("player") instance=ExtResource("3_bm10e")]
+player = NodePath("../../CharacterBody2D")
