@@ -3,13 +3,17 @@
 [ext_resource type="Script" uid="uid://dd071ne5liv32" path="res://scripts/house.gd" id="1_d7po0"]
 [ext_resource type="TileSet" uid="uid://triat48wgm6j" path="res://resources/house_tilemap.tres" id="2_rk7hg"]
 
-[node name="House" type="Node2D" node_paths=PackedStringArray("base_tilemap", "furniture_tilemap")]
+[node name="House" type="Node2D" node_paths=PackedStringArray("base_tilemap", "furniture_tilemap", "navigation_tilemap")]
 script = ExtResource("1_d7po0")
 base_tilemap = NodePath("Base")
 furniture_tilemap = NodePath("Furniture")
+navigation_tilemap = NodePath("Navigation")
 
 [node name="Base" type="TileMapLayer" parent="."]
 tile_set = ExtResource("2_rk7hg")
 
 [node name="Furniture" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_rk7hg")
+
+[node name="Navigation" type="TileMapLayer" parent="."]
 tile_set = ExtResource("2_rk7hg")
