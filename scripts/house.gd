@@ -17,7 +17,10 @@ var school : GameData.School
 
 func _ready():
 	school = data.school
+	var sand_tilemap = get_parent().get_parent().get_parent().get_parent().sand_tilemap
 	
+	for cell in data.cellList:
+		sand_tilemap.set_cell(cell + Vector2i(global_position/32), 0, Vector2i(0, 1))
 	base_tilemap.set_cells_terrain_connect(data.cellList, 0, school)
 	
 	for bed in data.furniture_data["beds"]:
