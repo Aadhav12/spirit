@@ -7,7 +7,6 @@ extends CharacterBody2D
 
 var current_location = GameData.VillagerLocation.HOME
 
-var speed := 100.0
 
 var house : House
 var altar : Altar
@@ -15,7 +14,7 @@ var altar : Altar
 func _ready():
 	altar = village.altars[data.school]
 	house = village.altars[data.school].houses[data.house]
-	position = Vector2(house.data.furniture_data.door)*32 + house.position + altar.position + village.position + (32 * Vector2(0, 1))
+	position = Vector2(house.data.furniture_data.door)*32 + house.position + altar.position + village.position + (32 * Vector2(0.5, -0.5))
 
 func _physics_process(delta: float) -> void:
 	if agent.is_navigation_finished():
@@ -25,9 +24,14 @@ func _physics_process(delta: float) -> void:
 
 	var next_position = agent.get_next_path_position()
 	var direction = (next_position - global_position).normalized()
-
-	velocity = direction * speed
+	if(next_position.distance_to(global_position) > 64):
+		go_to(agent.target_position)
+	
+	velocity = direction * data.speed
 	move_and_slide()
 
+func _process(delta : float):
+	pass
+	
 func go_to(world_position: Vector2):
 	agent.target_position = world_position

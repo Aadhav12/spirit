@@ -16,12 +16,21 @@ func _on_next_transitions() -> void:
 
 
 func _on_enter() -> void:
-	if villager.current_location == GameData.VillagerLocation.HOME:
+	var next_location = GameData.VillagerLocation.values().pick_random()
+	if next_location == GameData.VillagerLocation.HOME:
+		villager.go_to(villager.altar.global_position + 32*Vector2(2.5, 3.5))
+		villager.current_location = GameData.VillagerLocation.ALTAR
+	elif next_location == GameData.VillagerLocation.ALTAR:
 		villager.go_to(villager.village.global_position + 32*Vector2(4.5, 4.5))
 		villager.current_location = GameData.VillagerLocation.TOWN_HALL
 	else:
-		villager.go_to(villager.house.global_position + 32*(Vector2(villager.house.data.furniture_data.door) + Vector2(0.5, -0.5)))
+		var destinations = []
+		for cell in villager.house.data.cellList:
+			if villager.house.navigation_tilemap.get_cell_atlas_coords(cell) == Vector2i(2,3):
+				destinations.append(Vector2(cell))
+		villager.go_to(villager.house.global_position + 32*destinations.pick_random() + 32*Vector2(0.5, 0.5))
 		villager.current_location = GameData.VillagerLocation.HOME
+	villager.data.speed = randi_range(50, 150)
 
 
 func _on_exit() -> void:
