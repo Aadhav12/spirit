@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+player=""
+
 [input]
 
 add_house={
