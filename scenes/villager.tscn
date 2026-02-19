@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c6y6ky7i1a8qr" path="res://scripts/villager/villager_idle_state.gd" id="4_37mdv"]
 [ext_resource type="Script" uid="uid://b6gkpxbbak8yd" path="res://scripts/villager/villager_walk_state.gd" id="5_6eh0s"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjpa3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eh0s"]
 atlas = ExtResource("1_kufqh")
 region = Rect2(0, 0, 32, 64)
 
@@ -14,16 +14,16 @@ region = Rect2(0, 0, 32, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bjpa3")
+"texture": SubResource("AtlasTexture_6eh0s")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37mdv"]
-radius = 4.0
-height = 8.0
+radius = 9.0
+height = 22.0
 
 [node name="Villager" type="CharacterBody2D"]
 collision_layer = 4
@@ -32,17 +32,19 @@ script = ExtResource("1_bjpa3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -24)
 sprite_frames = SubResource("SpriteFrames_i0lkk")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_37mdv")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("3_37mdv")
 initial_node_state = NodePath("Idle State")
 
-[node name="Idle State" type="Node" parent="State Machine"]
+[node name="Idle State" type="Node" parent="State Machine" node_paths=PackedStringArray("agent")]
 script = ExtResource("4_37mdv")
+agent = NodePath("../../NavigationAgent2D")
 
 [node name="Walk State" type="Node" parent="State Machine" node_paths=PackedStringArray("villager")]
 script = ExtResource("5_6eh0s")
@@ -53,3 +55,4 @@ villager = NodePath("../..")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="State Machine/Idle State" method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

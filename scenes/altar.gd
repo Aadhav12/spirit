@@ -3,16 +3,47 @@ extends Node2D
 
 @export var data : AltarData
 @export var base_tilemap : TileMapLayer
+@export var navigation_tilemap : TileMapLayer
 
 const house_scene = preload("res://scenes/house.tscn")
 var house_instance : House
 var house_generator : HouseGenerator
+var num_villagers : int = 0
+var path_cells : Array[Vector2i] = []
+var path_level : int = 0
+@export var reputation : int = 0
 
 var houses : Array[House]
 
 func _ready():
 	base_tilemap.set_cells_terrain_connect(data.cellList, 0, data.school)
+	base_tilemap.set_cell(data.door, data.school, Vector2i(5, 2))
+	
+	for cell in data.cellList:
+		if (base_tilemap.get_cell_atlas_coords(cell) == Vector2i(3, 1)):
+			navigation_tilemap.set_cell(cell, data.school, Vector2i(2, 3))
+	
 	house_generator = HouseGenerator.new()
+
+func _process(delta):
+	if Input.is_action_just_pressed("add_altar_death"):
+		reputation += 5
+		print(reputation)
+	if num_villagers < reputation / 5:
+		if len(houses[-1].villagers) != len(houses[-1].data.furniture_data["beds"]):
+			create_villager(len(houses) - 1)
+		else:
+			var num_beds = randi_range(1, 5)
+			create_house(int(10 * num_beds), num_beds)
+			create_villager(len(houses) - 1)
+
+func create_villager(house : int):
+	houses[house].create_villager(house)
+	num_villagers += 1
+
+func set_road_level(level : int):
+	get_parent().upgrade_paths.set_cells_terrain_connect(path_cells, 0, level)
+	path_level = level
 
 func create_house(house_size : int, num_beds : int):
 	var house_data = HouseData.new()
@@ -47,7 +78,7 @@ func create_house(house_size : int, num_beds : int):
 		get_parent().cellStatus[selected + cell + data.position] = 2
 	house_instance.data.position = selected
 	add_child(house_instance)
-	create_path(selected + house_instance.data.furniture_data.door + Vector2i(0, 1), Vector2i(2, 5))
+	create_path(selected + house_instance.data.furniture_data.door, Vector2i(2, 4))
 	houses.append(house_instance)
 	#return house_instance
 	
@@ -67,9 +98,14 @@ func create_path(a: Vector2i, b: Vector2i):
 			astar.set_point_weight_scale(cell, 0.25)
 	
 	var path = astar.get_id_path(a + data.position, b + data.position)
+	for cell in path:
+		path_cells.append(cell)
+	
+	get_parent().upgrade_paths.set_cells_terrain_connect(path, 0, path_level)
+
 	path.append(a + Vector2i(0, -1) + data.position)
 	path.append(b + Vector2i(0, -1) + data.position)
-	
+
 	get_parent().set_cells_terrain_connect(path, 0, 0)
 	
 	for cell in path:
