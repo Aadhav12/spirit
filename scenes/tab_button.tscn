@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6np6kwvpc7uc"]
+
+[ext_resource type="FontFile" uid="uid://dvanrtqgtfk8b" path="res://assets/ProggySmall.ttf" id="1_0nalj"]
+[ext_resource type="Texture2D" uid="uid://c3q62dreggagl" path="res://assets/ui.png" id="2_6qsfo"]
+[ext_resource type="Script" uid="uid://d23m0cgkri6js" path="res://scripts/tab_button.gd" id="3_6qsfo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wrfc6"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+texture = ExtResource("2_6qsfo")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(32, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_47lfo"]
+texture = ExtResource("2_6qsfo")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(32, 64, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_24q80"]
+texture = ExtResource("2_6qsfo")
+texture_margin_left = 10.0
+texture_margin_top = 8.0
+texture_margin_right = 10.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(32, 32, 32, 32)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4a40e"]
+
+[node name="TabButton" type="Button"]
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
+theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
+theme_override_colors/font_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
+theme_override_colors/font_hover_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
+theme_override_fonts/font = ExtResource("1_0nalj")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_wrfc6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_47lfo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_24q80")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4a40e")
+text = "Error"
+script = ExtResource("3_6qsfo")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

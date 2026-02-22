@@ -9,6 +9,8 @@
 atlas = ExtResource("1_syvep")
 region = Rect2(0, 0, 32, 32)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbsfc"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_syvep"]
 content_margin_left = 10.0
 content_margin_top = 8.0
@@ -39,8 +41,6 @@ region_rect = Rect2(32, 32, 32, 32)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_syvep"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbsfc"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jbsfc"]
 atlas = ExtResource("1_syvep")
 region = Rect2(32, 32, 32, 32)
@@ -63,8 +63,7 @@ shop_menu = NodePath("ShopMenu")
 hud = NodePath("HUD")
 coins_label = NodePath("HUD/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/Coins")
 
-[node name="ShopMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("item_container", "user_interface", "back_button", "next_button")]
-visible = false
+[node name="ShopMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("item_container", "user_interface", "back_button", "next_button", "tab_container")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,6 +79,7 @@ item_container = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/ItemContain
 user_interface = NodePath("..")
 back_button = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/Scroll/Back")
 next_button = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/Scroll/Next")
+tab_container = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/TabsContainer")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="ShopMenu"]
 custom_minimum_size = Vector2(50, 60)
@@ -109,69 +109,8 @@ theme_override_constants/separation = 20
 [node name="HBoxContainer" type="HBoxContainer" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="SpellsTab" type="Button" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
+[node name="TabsContainer" type="HBoxContainer" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_fonts/font = ExtResource("2_l2bgj")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_syvep")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_y1h3b")
-theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
-text = "Spells"
-
-[node name="VillageTab" type="Button" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_fonts/font = ExtResource("2_l2bgj")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_syvep")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_y1h3b")
-theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
-text = "Village"
-
-[node name="DefenseTab" type="Button" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_fonts/font = ExtResource("2_l2bgj")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_syvep")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_y1h3b")
-theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
-text = "Defense"
-
-[node name="AltarTab" type="Button" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_fonts/font = ExtResource("2_l2bgj")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_syvep")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_y1h3b")
-theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
-text = "Altars"
 
 [node name="VSeparator" type="VSeparator" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -316,10 +255,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
 text = "Shop"
 
-[connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/SpellsTab" to="ShopMenu" method="_on_spells_tab_pressed"]
-[connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/VillageTab" to="ShopMenu" method="_on_village_tab_pressed"]
-[connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/DefenseTab" to="ShopMenu" method="_on_defense_tab_pressed"]
-[connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/AltarTab" to="ShopMenu" method="_on_altar_tab_pressed"]
 [connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/Scroll/Back" to="ShopMenu" method="_on_back_pressed"]
 [connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/Scroll/Next" to="ShopMenu" method="_on_next_pressed"]

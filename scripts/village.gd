@@ -23,7 +23,6 @@ var houses : Array[House] = []
 
 
 func _ready():
-	world.user_interface.buy_pressed.connect(buy_altar)
 	astar = AStarGrid2D.new()
 	astar.region = Rect2i(-200, -200, 400, 400)
 	astar.cell_size = Vector2i(1, 1)
@@ -52,14 +51,9 @@ func _ready():
 
 			cellStatus[Vector2i(i, j)] = 2
 
-func buy_altar(item_data):
-	if GameData.coins >= GameData.AltarCosts[len(altars.keys())]:
-		if item_data.type == "altar":
-			if not altars.has(GameData.spirit_names[item_data.name]):
-				GameData.shop_data['altars'].erase(item_data)
-				world.user_interface.reduce_coins(GameData.AltarCosts[len(altars.keys())])
-				create_house(GameData.spirit_names[item_data.name], 20, 2)
-				altars[GameData.spirit_names[item_data.name]].create_villager(0)
+func purchase_altar(item_data):
+	create_house(GameData.spirit_names[item_data.name], 20, 2)
+	altars[GameData.spirit_names[item_data.name]].create_villager(0)
 
 func create_house(school : GameData.School, house_size : int, num_beds : int):
 	if not altars.has(school):
@@ -101,10 +95,7 @@ func create_altar(school : GameData.School):
 			altar_data.cellList.append(Vector2i(i, j))
 	altars[school] = altar_instance
 	altar_instance.data = altar_data
-	for i in range(0, len(GameData.shop_data['altars'])):
-		GameData.shop_data['altars'][i].price = str(GameData.AltarCosts[len(altars.keys())])
 	add_child(altar_instance)
-	print(GameData.shop_data['altars'][1].price)
 	
 func create_path(a: Vector2i, b: Vector2i):
 	# Mark blocked cells

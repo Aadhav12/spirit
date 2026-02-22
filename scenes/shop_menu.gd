@@ -5,13 +5,22 @@ extends MarginContainer
 
 @export var back_button: Button
 @export var next_button: Button
-var shop_item_scene = preload("res://scenes/shop_item.tscn")
+@export var tab_container: HBoxContainer
+
+const tab_button_scene = preload("res://scenes/tab_button.tscn")
+const shop_item_scene = preload("res://scenes/shop_item.tscn")
+
 var current_slide = 0
-var current_category = "spells"
+var current_category = "Spells"
 
 func _ready():
-	load_category("spells")
+	load_category("Spells")
 	user_interface.buy_pressed.connect(refresh)
+	for key in GameData.shop_data:
+		var tab_button_instance = tab_button_scene.instantiate()
+		tab_button_instance.label_text = key
+		tab_button_instance.shop_menu = self
+		tab_container.add_child(tab_button_instance)
 
 func refresh(data):
 	load_category(current_category)
@@ -31,26 +40,6 @@ func load_category(category : String):
 		item_container.add_child(item_instance)
 	if len(GameData.shop_data[category]) > 5:
 		next_button.flat = false
-
-func _on_spells_tab_pressed() -> void:
-	load_category("spells")
-	current_slide = 0
-
-
-func _on_village_tab_pressed() -> void:
-	load_category("village")
-	current_slide = 0
-
-
-func _on_defense_tab_pressed() -> void:
-	load_category("defense")
-	current_slide = 0
-
-
-func _on_altar_tab_pressed() -> void:
-	load_category("altars")
-	current_slide = 0
-
 
 func _on_back_pressed() -> void:
 	if back_button.flat == false:
