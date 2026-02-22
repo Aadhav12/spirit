@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=2 format=3 uid="uid://dgs7m62eglkla"]
+
+[ext_resource type="Script" uid="uid://bdhmcbjqh2w03" path="res://resources/shop_item_data.gd" id="1_dvdqt"]
+
+[resource]
+script = ExtResource("1_dvdqt")
+names = Array[String](["Farms I", "Farms II", "Farms III"])
+prices = Array[int]([1000, 5000, 10000])
+type = "farms"
+metadata/_custom_type_script = "uid://bdhmcbjqh2w03"

@@ -6,10 +6,11 @@ var user_interface : Control
 @export var label: Label
 @export var button: Button
 
+
 func setup(data):
 	item_data = data
 	label.text = data.name
-	button.text = data.price
+	button.text = str(data.price)
 
 
 func _on_button_pressed() -> void:

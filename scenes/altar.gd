@@ -105,7 +105,8 @@ func create_path(a: Vector2i, b: Vector2i):
 	for cell in path:
 		path_cells.append(cell)
 	
-	get_parent().upgrade_paths.set_cells_terrain_connect(path, 0, path_level)
+	if path_level != 0:
+		get_parent().upgrade_paths.set_cells_terrain_connect(path, 0, path_level)
 
 	path.append(a + Vector2i(0, -1) + data.position)
 	path.append(b + Vector2i(0, -1) + data.position)
