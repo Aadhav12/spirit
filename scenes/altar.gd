@@ -14,9 +14,10 @@ var path_level : int = 0
 @export var reputation : int = 0
 
 var houses : Array[House]
+var house_level = 0
 
 func _ready():
-	base_tilemap.set_cells_terrain_connect(data.cellList, 0, data.school)
+	base_tilemap.set_cells_terrain_connect(data.cellList, data.school, 0)
 	base_tilemap.set_cell(data.door, data.school, Vector2i(5, 2))
 	var sand_tilemap = get_parent().get_parent().get_parent().sand_tilemap
 	
@@ -25,7 +26,7 @@ func _ready():
 	
 	for cell in data.cellList:
 		if (base_tilemap.get_cell_atlas_coords(cell) == Vector2i(3, 1)):
-			navigation_tilemap.set_cell(cell, data.school, Vector2i(2, 3))
+			navigation_tilemap.set_cell(cell, data.school, Vector2i(0, 0))
 	
 	house_generator = HouseGenerator.new()
 
@@ -52,6 +53,11 @@ func set_road_level(level : int):
 func increment_road_level():
 	get_parent().upgrade_paths.set_cells_terrain_connect(path_cells, 0, path_level + 1)
 	path_level += 1
+	
+func increment_house_level():
+	house_level += 1
+	for house in houses:
+		house.set_house_level(house_level)
 
 func create_house(house_size : int, num_beds : int):
 	var house_data = HouseData.new()
@@ -86,6 +92,7 @@ func create_house(house_size : int, num_beds : int):
 		get_parent().cellStatus[selected + cell + data.position] = 2
 	house_instance.data.position = selected
 	add_child(house_instance)
+	house_instance.render(house_level)
 	create_path(selected + house_instance.data.furniture_data.door, Vector2i(2, 4))
 	houses.append(house_instance)
 	#return house_instance

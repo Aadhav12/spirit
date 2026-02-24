@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="IconData" load_steps=5 format=3 uid="uid://d0l14cwhog1pl"]
+[gd_resource type="Resource" script_class="IconData" load_steps=6 format=3 uid="uid://d0l14cwhog1pl"]
 
 [ext_resource type="Script" uid="uid://c50xmmrv66pmf" path="res://resources/shop/icons/icon_data.gd" id="1_ghpne"]
 [ext_resource type="Texture2D" uid="uid://c3q62dreggagl" path="res://assets/ui.png" id="2_pcodf"]
@@ -11,9 +11,14 @@ region = Rect2(128, 96, 32, 32)
 atlas = ExtResource("2_pcodf")
 region = Rect2(96, 96, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjxnr"]
+atlas = ExtResource("2_pcodf")
+region = Rect2(160, 96, 32, 32)
+
 [resource]
 script = ExtResource("1_ghpne")
 textures = Dictionary[int, AtlasTexture]({
+1: SubResource("AtlasTexture_vjxnr"),
 2: SubResource("AtlasTexture_pcodf"),
 4: SubResource("AtlasTexture_uyeip")
 })

@@ -12,7 +12,7 @@ func _ready() -> void:
 	refresh()
 	function_dict = {
 		"paths": village.upgrade_roads,
-		"house": upgrade_paths,
+		"house": village.upgrade_houses,
 		"altar": village.purchase_altar,
 		"farms": upgrade_paths
 	}
