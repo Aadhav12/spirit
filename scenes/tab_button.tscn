@@ -35,6 +35,9 @@ region_rect = Rect2(32, 32, 32, 32)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4a40e"]
 
 [node name="TabButton" type="Button"]
+offset_left = 1.0
+offset_right = 56.0
+offset_bottom = 25.0
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
 theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)

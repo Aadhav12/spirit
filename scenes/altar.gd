@@ -48,6 +48,10 @@ func create_villager(house : int):
 func set_road_level(level : int):
 	get_parent().upgrade_paths.set_cells_terrain_connect(path_cells, 0, level)
 	path_level = level
+	
+func increment_road_level():
+	get_parent().upgrade_paths.set_cells_terrain_connect(path_cells, 0, path_level + 1)
+	path_level += 1
 
 func create_house(house_size : int, num_beds : int):
 	var house_data = HouseData.new()
