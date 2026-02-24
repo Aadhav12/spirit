@@ -17,6 +17,9 @@ var school : GameData.School
 
 func _ready():
 	school = data.school
+	render()
+
+func render():
 	var sand_tilemap = get_parent().get_parent().get_parent().get_parent().sand_tilemap
 	
 	for cell in data.cellList:
@@ -24,20 +27,20 @@ func _ready():
 	base_tilemap.set_cells_terrain_connect(data.cellList, 0, school)
 	
 	for bed in data.furniture_data["beds"]:
-		furniture_tilemap.set_cell(bed, school, Vector2(0, 2))
+		furniture_tilemap.set_cell(bed, school, GameData.house_atlas_dict["bed"])
 		
 	for bedside_table in data.furniture_data["bedside_tables"]:
-		furniture_tilemap.set_cell(bedside_table, school, Vector2(1, 2))
+		furniture_tilemap.set_cell(bedside_table, school, GameData.house_atlas_dict["bedside_table"])
 	
 	for carpet in data.furniture_data["carpets"]:
-		furniture_tilemap.set_cell(carpet + Vector2i(0, -1), school, Vector2(1, 3))
-		furniture_tilemap.set_cell(carpet, school, Vector2(1, 4))
+		furniture_tilemap.set_cell(carpet + Vector2i(0, -1), school, GameData.house_atlas_dict["carpet"])
+		furniture_tilemap.set_cell(carpet, school, GameData.house_atlas_dict["carpet"] + Vector2i(0, 1))
 	
 	for table in data.furniture_data["tables"]:
-		furniture_tilemap.set_cell(table, school, Vector2(3, 3))
-		furniture_tilemap.set_cell(table + Vector2i(0, -1), school, Vector2(4, 3))
+		furniture_tilemap.set_cell(table, school, GameData.house_atlas_dict["chair"])
+		furniture_tilemap.set_cell(table + Vector2i(0, -1), school, GameData.house_atlas_dict["table"])
 		
-	base_tilemap.set_cell(data.furniture_data["door"], school, Vector2i(5, 2))
+	base_tilemap.set_cell(data.furniture_data["door"], school, GameData.house_atlas_dict["door"])
 	for cell in data.cellList:
 		if (cell not in data.furniture_data["tables"]
 		and cell not in data.furniture_data["bedside_tables"]

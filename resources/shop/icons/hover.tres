@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="IconData" load_steps=5 format=3 uid="uid://dhu6f5m53lh6y"]
+
+[ext_resource type="Script" uid="uid://c50xmmrv66pmf" path="res://resources/shop/icons/icon_data.gd" id="1_m7s6v"]
+[ext_resource type="Texture2D" uid="uid://c3q62dreggagl" path="res://assets/ui.png" id="2_r3vfb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3vfb"]
+atlas = ExtResource("2_r3vfb")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv6ve"]
+atlas = ExtResource("2_r3vfb")
+region = Rect2(96, 64, 32, 32)
+
+[resource]
+script = ExtResource("1_m7s6v")
+textures = Dictionary[int, AtlasTexture]({
+2: SubResource("AtlasTexture_r3vfb"),
+4: SubResource("AtlasTexture_yv6ve")
+})
+metadata/_custom_type_script = "uid://c50xmmrv66pmf"

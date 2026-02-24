@@ -54,6 +54,10 @@ func _ready():
 func purchase_altar(item_data):
 	create_house(GameData.spirit_names[item_data.name], 20, 2)
 	altars[GameData.spirit_names[item_data.name]].create_villager(0)
+	GameData.purchased_schools.append(GameData.spirit_names[item_data.name])
+
+func upgrade_roads(item_data):
+	altars[item_data.school].increment_road_level()
 
 func create_house(school : GameData.School, house_size : int, num_beds : int):
 	if not altars.has(school):
