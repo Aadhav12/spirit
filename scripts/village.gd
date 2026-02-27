@@ -62,6 +62,9 @@ func upgrade_roads(item_data):
 func upgrade_houses(item_data):
 	altars[item_data.school].increment_house_level()
 
+func purchase_spell(item_data):
+	GameData.purchased_spells[item_data.school] += 1
+
 func create_house(school : GameData.School, house_size : int, num_beds : int):
 	if not altars.has(school):
 		create_altar(school)

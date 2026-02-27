@@ -35,3 +35,10 @@ var house_atlas_dict = {
 	"bedside_table": Vector2i(1,0),
 	"carpet": Vector2i(1,1),
 }
+
+var purchased_spells = {
+	GameData.School.SKY: 1,
+	GameData.School.OCEAN: 1,
+	GameData.School.LOVE: 1,
+	GameData.School.DEATH: 1,
+}

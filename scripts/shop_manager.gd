@@ -14,6 +14,8 @@ func _ready() -> void:
 		"paths": village.upgrade_roads,
 		"house": village.upgrade_houses,
 		"altar": village.purchase_altar,
+		"decor": upgrade_paths,
+		"spell": village.purchase_spell,
 		"farms": upgrade_paths
 	}
 
@@ -54,7 +56,7 @@ func generate_shop_data() -> Dictionary:
 			for school in GameData.purchased_schools:
 				var school_data = []
 				for item in tab.tab_items:
-					if item.levels[school] != len(item.names):
+					if item.levels[school] != len(item.names) and (item.school in GameData.purchased_schools or item.school == GameData.School.NONE):
 						if tab.shared_cost:
 							school_data.append({
 								"name": item.names[item.levels[school]],
@@ -62,7 +64,8 @@ func generate_shop_data() -> Dictionary:
 								"type": item.type,
 								"level": item.levels[school],
 								"school_specific": tab.school_specific,
-								"group": tab.name
+								"group": tab.name,
+								"school": item.school
 							})
 						else:
 							school_data.append({
@@ -71,14 +74,15 @@ func generate_shop_data() -> Dictionary:
 								"type": item.type,
 								"level": item.levels[school],
 								"school_specific": tab.school_specific,
-								"group": tab.name
+								"group": tab.name,
+								"school": item.school
 							})
 				tab_data[school] = school_data
 			shop_data[tab.name] = tab_data
 		else:
 			var tab_data = []
 			for item in tab.tab_items:
-				if item.level != len(item.names):
+				if item.level != len(item.names) and (item.school in GameData.purchased_schools or item.school == GameData.School.NONE):
 					if tab.shared_cost:
 						tab_data.append({
 							"name": item.names[item.level],
@@ -86,7 +90,8 @@ func generate_shop_data() -> Dictionary:
 							"type": item.type,
 							"level": item.level,
 							"school_specific": tab.school_specific,
-							"group": tab.name
+							"group": tab.name,
+							"school": item.school
 						})
 					else:
 						tab_data.append({
@@ -95,7 +100,8 @@ func generate_shop_data() -> Dictionary:
 							"type": item.type,
 							"level": item.level,
 							"school_specific": tab.school_specific,
-							"group": tab.name
+							"group": tab.name,
+							"school": item.school
 						})
 			shop_data[tab.name] = tab_data
 	return shop_data

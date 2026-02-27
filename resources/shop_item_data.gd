@@ -12,3 +12,5 @@ var levels : Dictionary = {
 	GameData.School.DEATH: 0,
 	GameData.School.LOVE: 0,
 }
+
+@export var school : GameData.School = GameData.School.NONE

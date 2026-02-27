@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="ShopTabData" load_steps=4 format=3 uid="uid://qdyrjv1hfu73"]
+[gd_resource type="Resource" script_class="ShopTabData" load_steps=7 format=3 uid="uid://qdyrjv1hfu73"]
 
 [ext_resource type="Script" uid="uid://c5xh1in2ft6sx" path="res://resources/shop_tab_data.gd" id="1_k0b7f"]
 [ext_resource type="Script" uid="uid://bdhmcbjqh2w03" path="res://resources/shop_item_data.gd" id="2_5bqgs"]
-[ext_resource type="Resource" uid="uid://ysq6f4bhfspf" path="res://resources/shop/village/houses.tres" id="3_5bqgs"]
+[ext_resource type="Resource" uid="uid://bdupql2cjhhnf" path="res://resources/shop/spells/sky.tres" id="3_5bqgs"]
+[ext_resource type="Resource" uid="uid://dymyg40tdkk44" path="res://resources/shop/spells/ocean.tres" id="4_nqus7"]
+[ext_resource type="Resource" uid="uid://3sl7gv35vn3j" path="res://resources/shop/spells/love.tres" id="5_uyl5n"]
+[ext_resource type="Resource" uid="uid://dpno8to7f7fcc" path="res://resources/shop/spells/death.tres" id="6_0d2u5"]
 
 [resource]
 script = ExtResource("1_k0b7f")
-tab_items = Array[ExtResource("2_5bqgs")]([ExtResource("3_5bqgs")])
+tab_items = Array[ExtResource("2_5bqgs")]([ExtResource("3_5bqgs"), ExtResource("4_nqus7"), ExtResource("5_uyl5n"), ExtResource("6_0d2u5")])
 name = "Spells"
 metadata/_custom_type_script = "uid://c5xh1in2ft6sx"
