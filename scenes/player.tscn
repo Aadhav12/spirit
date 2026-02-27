@@ -1,10 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://ddueovvst1vtx"]
+[gd_scene load_steps=27 format=3 uid="uid://ddueovvst1vtx"]
 
 [ext_resource type="Script" uid="uid://bmx38pb4qwb2t" path="res://scripts/player.gd" id="1_e80uo"]
-[ext_resource type="Script" path="res://scripts/node_state_machine.gd" id="2_kpjcp"]
-[ext_resource type="Texture2D" uid="uid://bhri6mt1t0qob" path="res://assets/Spirits.png" id="2_qlg0r"]
+[ext_resource type="Script" uid="uid://dspiaugxck6tr" path="res://scripts/node_state_machine.gd" id="2_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://cue54vvjj1h1a" path="res://assets/Spirits.png" id="2_qlg0r"]
 [ext_resource type="Script" uid="uid://dkcfcuj4muxs8" path="res://scripts/player_idle_state.gd" id="3_kne1u"]
 [ext_resource type="Script" uid="uid://dv48fhvujvwaq" path="res://scripts/player_walk_state.gd" id="5_cxr5p"]
+[ext_resource type="PackedScene" uid="uid://bhb6hbkt3p3sa" path="res://scenes/hurt_component.tscn" id="6_fjrip"]
+[ext_resource type="PackedScene" uid="uid://duviiv0o4p1y7" path="res://scenes/health_component.tscn" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("2_qlg0r")
@@ -165,8 +167,14 @@ animations = [{
 radius = 11.0
 height = 62.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smehm"]
+radius = 15.0
+height = 70.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("hurt_component", "health_component")]
 script = ExtResource("1_e80uo")
+hurt_component = NodePath("Hurt Component")
+health_component = NodePath("Health Component")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a38lo")
@@ -190,3 +198,12 @@ animated_sprite_2D = NodePath("../../AnimatedSprite2D")
 script = ExtResource("5_cxr5p")
 player = NodePath("../..")
 animated_sprite_2D = NodePath("../../AnimatedSprite2D")
+
+[node name="Hurt Component" parent="." instance=ExtResource("6_fjrip")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt Component"]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_smehm")
+debug_color = Color(0.7614084, 0.37243247, 0.6656233, 0.41960785)
+
+[node name="Health Component" parent="." instance=ExtResource("6_tuyoq")]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhri6mt1t0qob"
-path="res://.godot/imported/Spirits.png-a70d9c845eade3cedb64270261ab961f.ctex"
+uid="uid://cue54vvjj1h1a"
+path="res://.godot/imported/spirits.png-2c4d0478d592af8178cc4abcd784b6af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Spirits.png"
-dest_files=["res://.godot/imported/Spirits.png-a70d9c845eade3cedb64270261ab961f.ctex"]
+source_file="res://assets/spirits.png"
+dest_files=["res://.godot/imported/spirits.png-2c4d0478d592af8178cc4abcd784b6af.ctex"]
 
 [params]
 
