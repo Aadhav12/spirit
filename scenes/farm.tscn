@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxux5mqukdxsp"]
+
+[ext_resource type="TileSet" uid="uid://triat48wgm6j" path="res://resources/house_tilemap.tres" id="1_kjpqf"]
+[ext_resource type="Script" uid="uid://cmfmqtxxbjy4q" path="res://scripts/farm.gd" id="1_o03py"]
+
+[node name="Farm" type="TileMapLayer"]
+tile_set = ExtResource("1_kjpqf")
+script = ExtResource("1_o03py")

@@ -28,10 +28,17 @@ var coins : int = 100000
 var shop_data = {}
 
 var house_atlas_dict = {
-	"table": Vector2i(4,3),
-	"chair": Vector2i(3, 3),
-	"bed": Vector2i(0,2),
+	"table": Vector2i(0, 3),
+	"chair": Vector2i(1, 3),
+	"bed": Vector2i(0, 1),
 	"door": Vector2i(5,2),
-	"bedside_table": Vector2i(1,2),
-	"carpet": Vector2i(1,3),
+	"bedside_table": Vector2i(1,0),
+	"carpet": Vector2i(1,1),
+}
+
+var purchased_spells = {
+	GameData.School.SKY: 1,
+	GameData.School.OCEAN: 1,
+	GameData.School.LOVE: 1,
+	GameData.School.DEATH: 1,
 }
