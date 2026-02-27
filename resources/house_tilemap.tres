@@ -712,6 +712,10 @@ texture_region_size = Vector2i(32, 32)
 0:4/0 = 0
 0:8/0 = 0
 0:12/0 = 0
+7:0/0 = 0
+7:4/0 = 0
+7:8/0 = 0
+7:12/0 = 0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_itky5"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -1271,6 +1275,10 @@ texture_region_size = Vector2i(32, 32)
 0:9/0 = 0
 0:13/size_in_atlas = Vector2i(1, 2)
 0:13/0 = 0
+7:0/0 = 0
+7:4/0 = 0
+7:8/0 = 0
+7:12/0 = 0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ysutf"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -1852,6 +1860,10 @@ texture_region_size = Vector2i(32, 32)
 0:9/0 = 0
 0:13/size_in_atlas = Vector2i(1, 2)
 0:13/0 = 0
+7:12/0 = 0
+7:8/0 = 0
+7:4/0 = 0
+7:0/0 = 0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_y3cwk"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -2432,6 +2444,10 @@ texture_region_size = Vector2i(32, 32)
 0:9/0 = 0
 0:13/size_in_atlas = Vector2i(1, 2)
 0:13/0 = 0
+7:0/0 = 0
+7:4/0 = 0
+7:8/0 = 0
+7:12/0 = 0
 
 [resource]
 tile_size = Vector2i(32, 32)

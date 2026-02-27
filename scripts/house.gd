@@ -41,8 +41,8 @@ func render(house_level : int):
 		furniture_tilemap.set_cell(carpet, school, house_level*Vector2i(0, 4) + GameData.house_atlas_dict["carpet"] + Vector2i(0, 1))
 	
 	for table in data.furniture_data["tables"]:
-		furniture_tilemap.set_cell(table, school, house_level*Vector2i(0, 4) + GameData.house_atlas_dict["chair"])
-		furniture_tilemap.set_cell(table + Vector2i(0, -1), school, house_level*Vector2i(0, 4) + GameData.house_atlas_dict["table"])
+		furniture_tilemap.set_cell(table, school, house_level*Vector2i(0, 4) + GameData.house_atlas_dict["table"])
+		furniture_tilemap.set_cell(table + Vector2i(0, -1), school, house_level*Vector2i(0, 4) + GameData.house_atlas_dict["chair"])
 		
 	base_tilemap.set_cell(data.furniture_data["door"], school, house_level*Vector2i(0, 4) + GameData.house_atlas_dict["door"])
 	for cell in data.cellList:

@@ -54,6 +54,7 @@ func _ready():
 func purchase_altar(item_data):
 	create_house(GameData.spirit_names[item_data.name], 20, 2)
 	altars[GameData.spirit_names[item_data.name]].create_villager(0)
+	altars[GameData.spirit_names[item_data.name]].create_farm()
 	GameData.purchased_schools.append(GameData.spirit_names[item_data.name])
 
 func upgrade_roads(item_data):
@@ -61,6 +62,9 @@ func upgrade_roads(item_data):
 	
 func upgrade_houses(item_data):
 	altars[item_data.school].increment_house_level()
+	
+func upgrade_farms(item_data):
+	altars[item_data.school].increment_farm_level()
 
 func purchase_spell(item_data):
 	GameData.purchased_spells[item_data.school] += 1
@@ -71,7 +75,7 @@ func create_house(school : GameData.School, house_size : int, num_beds : int):
 	altars[school].create_house(house_size, num_beds)
 
 func create_altar(school : GameData.School):
-	var altar_radius = 15
+	var altar_radius = 10
 	altar_instance = altar_scene.instantiate()
 	var possible_cells = []
 	var possible

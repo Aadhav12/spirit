@@ -16,7 +16,7 @@ func _ready() -> void:
 		"altar": village.purchase_altar,
 		"decor": upgrade_paths,
 		"spell": village.purchase_spell,
-		"farms": upgrade_paths
+		"farms": village.upgrade_farms
 	}
 
 func buy(item_data) -> void:
