@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=2 format=3 uid="uid://bdupql2cjhhnf"]
+
+[ext_resource type="Script" uid="uid://bdhmcbjqh2w03" path="res://resources/shop_item_data.gd" id="1_e2mju"]
+
+[resource]
+script = ExtResource("1_e2mju")
+names = Array[String](["Lift", "Soar", "Above All"])
+prices = Array[int]([10, 20, 30])
+type = "spell"
+school = 1
+metadata/_custom_type_script = "uid://bdhmcbjqh2w03"

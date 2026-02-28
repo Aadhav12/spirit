@@ -26,7 +26,7 @@ func _on_enter() -> void:
 	else:
 		var destinations = []
 		for cell in villager.house.data.cellList:
-			if villager.house.navigation_tilemap.get_cell_atlas_coords(cell) == Vector2i(2,3):
+			if villager.house.navigation_tilemap.get_cell_atlas_coords(cell) == Vector2i(0, 0):
 				destinations.append(Vector2(cell))
 		villager.go_to(villager.house.global_position + 32*destinations.pick_random() + 32*Vector2(0.5, 0.5))
 		villager.current_location = GameData.VillagerLocation.HOME

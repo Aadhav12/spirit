@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopItemData" load_steps=2 format=3 uid="uid://3sl7gv35vn3j"]
+
+[ext_resource type="Script" uid="uid://bdhmcbjqh2w03" path="res://resources/shop_item_data.gd" id="1_g66ql"]
+
+[resource]
+script = ExtResource("1_g66ql")
+names = Array[String](["Intertwine", "Devotion", "Union"])
+prices = Array[int]([10, 20, 30])
+type = "spell"
+school = 4
+metadata/_custom_type_script = "uid://bdhmcbjqh2w03"

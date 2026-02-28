@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShopTabData" load_steps=6 format=3 uid="uid://b8ytwyycjj7sc"]
+
+[ext_resource type="Script" uid="uid://c5xh1in2ft6sx" path="res://resources/shop_tab_data.gd" id="1_166qi"]
+[ext_resource type="Script" uid="uid://bdhmcbjqh2w03" path="res://resources/shop_item_data.gd" id="2_kv4ur"]
+[ext_resource type="Resource" uid="uid://ysq6f4bhfspf" path="res://resources/shop/village/houses.tres" id="3_kv4ur"]
+[ext_resource type="Resource" uid="uid://d1ffqex2qqisv" path="res://resources/shop/village/roads.tres" id="4_uugc6"]
+[ext_resource type="Resource" uid="uid://dgs7m62eglkla" path="res://resources/shop/village/farms.tres" id="5_jlw57"]
+
+[resource]
+script = ExtResource("1_166qi")
+tab_items = Array[ExtResource("2_kv4ur")]([ExtResource("3_kv4ur"), ExtResource("4_uugc6"), ExtResource("5_jlw57")])
+name = "Village"
+school_specific = true
+metadata/_custom_type_script = "uid://c5xh1in2ft6sx"

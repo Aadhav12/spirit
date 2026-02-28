@@ -1,13 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://p27e8wpl4pgy"]
+[gd_scene load_steps=17 format=3 uid="uid://p27e8wpl4pgy"]
 
 [ext_resource type="Script" uid="uid://br0v5nqpnschq" path="res://scripts/user_interface.gd" id="1_cufge"]
 [ext_resource type="Script" uid="uid://cu4t20uesk8ls" path="res://scenes/shop_menu.gd" id="1_jbsfc"]
 [ext_resource type="Texture2D" uid="uid://c3q62dreggagl" path="res://assets/ui.png" id="1_syvep"]
 [ext_resource type="FontFile" uid="uid://dvanrtqgtfk8b" path="res://assets/ProggySmall.ttf" id="2_l2bgj"]
+[ext_resource type="Resource" uid="uid://dw1sm30suucon" path="res://resources/shop/icons/normal.tres" id="3_sdud1"]
+[ext_resource type="Resource" uid="uid://dhu6f5m53lh6y" path="res://resources/shop/icons/hover.tres" id="4_aisij"]
+[ext_resource type="Resource" uid="uid://d0l14cwhog1pl" path="res://resources/shop/icons/pressed.tres" id="5_prbuy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_syvep"]
 atlas = ExtResource("1_syvep")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbsfc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_syvep"]
 content_margin_left = 10.0
@@ -39,8 +44,6 @@ region_rect = Rect2(32, 32, 32, 32)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_syvep"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbsfc"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jbsfc"]
 atlas = ExtResource("1_syvep")
 region = Rect2(32, 32, 32, 32)
@@ -63,23 +66,28 @@ shop_menu = NodePath("ShopMenu")
 hud = NodePath("HUD")
 coins_label = NodePath("HUD/VBoxContainer/HBoxContainer/NinePatchRect/MarginContainer/Coins")
 
-[node name="ShopMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("item_container", "user_interface", "back_button", "next_button")]
-visible = false
+[node name="ShopMenu" type="MarginContainer" parent="." node_paths=PackedStringArray("item_container", "user_interface", "back_button", "next_button", "tab_container", "school_selector", "school_selector_container")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 42
 script = ExtResource("1_jbsfc")
 item_container = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/ItemContainer")
 user_interface = NodePath("..")
 back_button = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/Scroll/Back")
 next_button = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/Scroll/Next")
+tab_container = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/TabsContainer")
+school_selector = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/SelectorContainer/Selector")
+school_selector_container = NodePath("NinePatchRect/InnerShopMenu/VBoxContainer/SelectorContainer")
+normal_school_icon_resource = ExtResource("3_sdud1")
+hover_school_icon_resource = ExtResource("4_aisij")
+pressed_school_icon_resource = ExtResource("5_prbuy")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="ShopMenu"]
 custom_minimum_size = Vector2(50, 60)
@@ -104,74 +112,13 @@ theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ShopMenu/NinePatchRect/InnerShopMenu"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="SpellsTab" type="Button" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
+[node name="TabsContainer" type="HBoxContainer" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_fonts/font = ExtResource("2_l2bgj")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_syvep")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_y1h3b")
-theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
-text = "Spells"
-
-[node name="VillageTab" type="Button" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_fonts/font = ExtResource("2_l2bgj")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_syvep")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_y1h3b")
-theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
-text = "Village"
-
-[node name="DefenseTab" type="Button" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_fonts/font = ExtResource("2_l2bgj")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_syvep")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_y1h3b")
-theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
-text = "Defense"
-
-[node name="AltarTab" type="Button" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_focus_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
-theme_override_fonts/font = ExtResource("2_l2bgj")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_syvep")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_y1h3b")
-theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
-text = "Altars"
 
 [node name="VSeparator" type="VSeparator" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -193,6 +140,22 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_y1h3b")
 theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
 text = "X"
+
+[node name="SelectorContainer" type="HBoxContainer" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/SelectorContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.36862746, 0.23921569, 0.15686275, 1)
+theme_override_fonts/font = ExtResource("2_l2bgj")
+theme_override_font_sizes/font_size = 16
+text = " Select School:"
+autowrap_mode = 3
+
+[node name="Selector" type="HBoxContainer" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/SelectorContainer"]
+layout_mode = 2
 
 [node name="ItemContainer" type="HBoxContainer" parent="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer"]
 layout_mode = 2
@@ -316,10 +279,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_l2bgj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_syvep")
 text = "Shop"
 
-[connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/SpellsTab" to="ShopMenu" method="_on_spells_tab_pressed"]
-[connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/VillageTab" to="ShopMenu" method="_on_village_tab_pressed"]
-[connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/DefenseTab" to="ShopMenu" method="_on_defense_tab_pressed"]
-[connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/AltarTab" to="ShopMenu" method="_on_altar_tab_pressed"]
 [connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/HBoxContainer/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/Scroll/Back" to="ShopMenu" method="_on_back_pressed"]
 [connection signal="pressed" from="ShopMenu/NinePatchRect/InnerShopMenu/VBoxContainer/Scroll/Next" to="ShopMenu" method="_on_next_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cue54vvjj1h1a"
-path="res://.godot/imported/spirits.png-2c4d0478d592af8178cc4abcd784b6af.ctex"
+uid="uid://54jftbrhu76g"
+path="res://.godot/imported/house_ocean_full.png-fc006d038d8f5098875823fd100a7b12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spirits.png"
-dest_files=["res://.godot/imported/spirits.png-2c4d0478d592af8178cc4abcd784b6af.ctex"]
+source_file="res://assets/house_ocean_full.png"
+dest_files=["res://.godot/imported/house_ocean_full.png-fc006d038d8f5098875823fd100a7b12.ctex"]
 
 [params]
 
