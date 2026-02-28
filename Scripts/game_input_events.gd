@@ -14,15 +14,9 @@ static func movement_input() -> Vector2:
 	else:
 		direction = Vector2.ZERO
 	return direction
-
+	
 static func is_movement_input() -> bool:
 	if direction == Vector2.ZERO:
 		return false
 	else:
 		return true
-		
-static func use_tool() -> bool:
-	
-	var use_tool_value: bool = Input.is_action_just_pressed("hit")
-	
-	return use_tool_value
