@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4dklas33ln2c"]
+[gd_scene load_steps=15 format=3 uid="uid://740biwpeq44x"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://begyw555d3wfl" path="res://assets/Spirits2.png" id="2_5uy6h"]
-[ext_resource type="Script" uid="uid://dspiaugxck6tr" path="res://scripts/node_state_machine.gd" id="3_c4w8v"]
+[ext_resource type="Script" path="res://scripts/node_state_machine.gd" id="3_c4w8v"]
 [ext_resource type="Script" uid="uid://bs1bif4j00s2l" path="res://scripts/enemy_walk_state.gd" id="4_5uy6h"]
 [ext_resource type="PackedScene" uid="uid://bmyiyfijprt0j" path="res://scenes/attack_component.tscn" id="5_c4w8v"]
 
@@ -73,7 +73,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5uy6h"]
 radius = 8.0
-height = 84.0
+height = 82.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwavj"]
 radius = 11.0
@@ -83,6 +83,7 @@ height = 88.0
 script = ExtResource("1_5uy6h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.49019608)
 sprite_frames = SubResource("SpriteFrames_w8i8w")
 animation = &"walk_front"
 autoplay = "walk_front"

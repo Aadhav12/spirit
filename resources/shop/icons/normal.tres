@@ -3,21 +3,21 @@
 [ext_resource type="Script" uid="uid://c50xmmrv66pmf" path="res://resources/shop/icons/icon_data.gd" id="1_34mml"]
 [ext_resource type="Texture2D" uid="uid://c3q62dreggagl" path="res://assets/ui.png" id="2_evftt"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_evftt"]
-atlas = ExtResource("2_evftt")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_er6ns"]
-atlas = ExtResource("2_evftt")
-region = Rect2(96, 32, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_e7br0"]
 atlas = ExtResource("2_evftt")
 region = Rect2(160, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_evftt"]
+atlas = ExtResource("2_evftt")
+region = Rect2(128, 32, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1q5r"]
 atlas = ExtResource("2_evftt")
 region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er6ns"]
+atlas = ExtResource("2_evftt")
+region = Rect2(96, 32, 32, 32)
 
 [resource]
 script = ExtResource("1_34mml")

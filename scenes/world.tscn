@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://vehlei6q6m6e"]
+[gd_scene load_steps=15 format=4 uid="uid://vehlei6q6m6e"]
 
 [ext_resource type="TileSet" uid="uid://cy5fmvoe07op1" path="res://resources/world_tilemap.tres" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://dvngildy1hc7m" path="res://scripts/world.gd" id="1_rwgxs"]
 [ext_resource type="Script" uid="uid://bgus81jrdsclx" path="res://scripts/village.gd" id="3_4wyf3"]
-[ext_resource type="TileSet" uid="uid://g6ad6ylp1ugb" path="res://resources/village.tres" id="4_qfnet"]
-[ext_resource type="Script" uid="uid://b5pwuyh321csg" path="res://scenes/test_camera_2d.gd" id="6_qfnet"]
+[ext_resource type="TileSet" uid="uid://dj31xhtpuvy1w" path="res://resources/village.tres" id="4_qfnet"]
 [ext_resource type="Script" uid="uid://c5xh1in2ft6sx" path="res://resources/shop_tab_data.gd" id="7_7r4gi"]
 [ext_resource type="Script" uid="uid://c23i46qpp5big" path="res://scripts/shop_manager.gd" id="7_i7141"]
 [ext_resource type="PackedScene" uid="uid://p27e8wpl4pgy" path="res://scenes/user_interface.tscn" id="8_4mrxx"]
@@ -12,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://qdyrjv1hfu73" path="res://resources/shop/tabs/spells.tres" id="9_w7kh3"]
 [ext_resource type="Resource" uid="uid://bq1mcbvsm8l7o" path="res://resources/shop/tabs/defense.tres" id="10_q5onr"]
 [ext_resource type="Resource" uid="uid://dakxanv5e0h17" path="res://resources/shop/tabs/altars.tres" id="11_jhx03"]
+[ext_resource type="PackedScene" uid="uid://xf43u437fx3d" path="res://scenes/aadhav_player.tscn" id="12_jhx03"]
+[ext_resource type="PackedScene" uid="uid://740biwpeq44x" path="res://scenes/enemy.tscn" id="13_o8fc1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_i7141"]
 vertices = PackedVector2Array(2992.4531, -901.14844, 3104.5, 1438.9063, -68.859375, 1412.0781, -38.132813, -952.8203)
@@ -24,12 +25,6 @@ sand_tilemap = NodePath("NavigationRegion2D/Sand")
 village = NodePath("NavigationRegion2D/Village")
 school = 1
 user_interface = NodePath("CanvasLayer/UserInterface")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1029, 164)
-position_smoothing_enabled = true
-script = ExtResource("6_qfnet")
-speed = 1000.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_i7141")
@@ -69,3 +64,11 @@ shop_tabs = Array[ExtResource("7_7r4gi")]([ExtResource("9_w7kh3"), ExtResource("
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UserInterface" parent="CanvasLayer" instance=ExtResource("8_4mrxx")]
+
+[node name="Player" parent="." instance=ExtResource("12_jhx03")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_o8fc1")]
+player = NodePath("../Player")

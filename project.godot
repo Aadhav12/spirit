@@ -90,6 +90,8 @@ add_altar_love={
 ]
 }
 folder_colors={
+"deadzone": null,
+"events": null,
 "res://assets/": "pink",
 "res://components/": "purple",
 "res://resources/": "blue",
