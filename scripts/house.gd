@@ -5,6 +5,7 @@ extends Node2D
 @export var base_tilemap : TileMapLayer
 @export var furniture_tilemap : TileMapLayer
 @export var navigation_tilemap : TileMapLayer
+@export var health_component: HealthComponent
 
 var villagers : Array[Villager] = []
 
@@ -18,6 +19,7 @@ var school : GameData.School
 
 func _ready():
 	school = data.school
+	create_health_hitbox()
 
 func set_house_level(house_level : int):
 	render(house_level)
@@ -70,3 +72,18 @@ func draw_rectangle(rect_position: Vector2i, width: int, height: int, atlasX : i
 	for i in range(0, height):
 		for j in range(0, width):
 			base_tilemap.set_cell(rect_position + Vector2i(j, i), 0, Vector2i(atlasX,0))
+
+func create_health_hitbox():
+	for cell in data.cellList:
+		
+		var collision = CollisionShape2D.new()
+		
+		var rect = RectangleShape2D.new()
+		rect.size = Vector2(32, 32)
+		
+		collision.shape = rect
+		collision.position = cell * 32
+		
+		collision.position = Vector2(cell) * 32 + Vector2(16, 16)
+		
+		health_component.add_child(collision)

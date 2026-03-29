@@ -2,7 +2,7 @@ extends NodeState
 
 @export var animated_sprite_2D: AnimatedSprite2D 
 @export var enemy: Enemy
-@export var speed: float = 150
+@export var speed: float = 100
 @export var agent: NavigationAgent2D
 
 func _physics_process(_delta: float) -> void:
@@ -26,6 +26,6 @@ func _physics_process(_delta: float) -> void:
 		animated_sprite_2D.play("walk_left")
 	elif direction == Vector2.RIGHT:
 		animated_sprite_2D.play("walk_right")
-	
+		
 	enemy.velocity = direction * speed
-	enemy.move_and_slide()
+	enemy.move_and_slide()	

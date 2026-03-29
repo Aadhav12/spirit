@@ -1,13 +1,11 @@
 class_name HealthComponent
-extends Node2D
+extends Area2D
 
-@export var max_damage = 1
-@export var current_damage = 0
-
-signal max_damage_reached
-
-func apply_damage(damage: int) -> void:
-	current_damage = clamp(current_damage + damage, 0, max_damage)
+@export var HP: int = 5
+@export var damage_layer: int
 	
-	if current_damage == max_damage:
-		max_damage_reached.emit()
+func update_health(Amount: int) -> void:
+	print("YAY IT WORKS")
+	HP += Amount
+	if HP <= 0:
+		print("oh no you died:(")
