@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=22 format=3 uid="uid://dj31xhtpuvy1w"]
 
-[ext_resource type="PackedScene" uid="uid://dwc27l2ain511" path="res://scenes/village_hall.tscn" id="1_4e5j3"]
-[ext_resource type="Texture2D" uid="uid://ce6wekkeo27i7" path="res://assets/house.png" id="2_1ybj6"]
-[ext_resource type="Texture2D" uid="uid://bckx08nf0fdol" path="res://assets/village.png" id="3_of2hl"]
-[ext_resource type="Texture2D" uid="uid://cfp2wf3lforo3" path="res://assets/village2.png" id="4_habkn"]
+[ext_resource type="PackedScene" uid="uid://dwc27l2ain511" path="res://village/scenes/village_hall.tscn" id="1_4e5j3"]
+[ext_resource type="Texture2D" uid="uid://ce6wekkeo27i7" path="res://assets/houses/house.png" id="2_1ybj6"]
+[ext_resource type="Texture2D" uid="uid://bckx08nf0fdol" path="res://assets/world/village.png" id="3_of2hl"]
+[ext_resource type="Texture2D" uid="uid://cfp2wf3lforo3" path="res://assets/world/village2.png" id="4_habkn"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_71j4m"]
 scenes/1/scene = ExtResource("1_4e5j3")

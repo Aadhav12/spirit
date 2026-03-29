@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameData="*res://scripts/game_data.gd"
+GameData="*res://general/scripts/game_data.gd"
 
 [display]
 
@@ -32,11 +32,14 @@ window/stretch/scale_mode="integer"
 [file_customization]
 
 folder_colors={
-"res://assets/": "pink",
-"res://components/": "purple",
-"res://resources/": "blue",
-"res://scenes/": "teal",
-"res://scripts/": "green"
+"res://assets/": "red",
+"res://characters/": "orange",
+"res://components/": "yellow",
+"res://general/": "green",
+"res://resources/": "teal",
+"res://ui/": "blue",
+"res://village/": "purple",
+"res://waves/": "pink"
 }
 
 [global_group]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://ck8ko51v445wl"]
+
+[ext_resource type="Script" uid="uid://s4pny20nkk6q" path="res://characters/villager/scripts/villager.gd" id="1_bjpa3"]
+[ext_resource type="Texture2D" uid="uid://ek8hulg0wu6f" path="res://assets/characters/villagers.png" id="1_kufqh"]
+[ext_resource type="Script" uid="uid://c20bkld5bi6ap" path="res://characters/villager/scripts/villager_node_state_machine.gd" id="3_37mdv"]
+[ext_resource type="Script" uid="uid://c6y6ky7i1a8qr" path="res://characters/villager/scripts/villager_idle_state.gd" id="4_37mdv"]
+[ext_resource type="Script" uid="uid://b6gkpxbbak8yd" path="res://characters/villager/scripts/villager_walk_state.gd" id="5_6eh0s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eh0s"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0lkk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eh0s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37mdv"]
+radius = 9.0
+height = 22.0
+
+[node name="Villager" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_bjpa3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_i0lkk")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_37mdv")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("3_37mdv")
+initial_node_state = NodePath("Idle State")
+
+[node name="Idle State" type="Node" parent="State Machine" node_paths=PackedStringArray("agent")]
+script = ExtResource("4_37mdv")
+agent = NodePath("../../NavigationAgent2D")
+
+[node name="Walk State" type="Node" parent="State Machine" node_paths=PackedStringArray("villager")]
+script = ExtResource("5_6eh0s")
+villager = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="State Machine/Idle State" method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
