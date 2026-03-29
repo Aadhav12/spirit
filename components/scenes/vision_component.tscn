@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmpfhwpq78f5i"]
+
+[ext_resource type="Script" uid="uid://cbviiapl8ria7" path="res://components/scripts/vision_component.gd" id="1_ii4ew"]
+
+[node name="Vision Component" type="Area2D"]
+script = ExtResource("1_ii4ew")
