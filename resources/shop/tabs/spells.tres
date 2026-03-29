@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ShopTabData" load_steps=7 format=3 uid="uid://qdyrjv1hfu73"]
 
-[ext_resource type="Script" uid="uid://c5xh1in2ft6sx" path="res://resources/shop_tab_data.gd" id="1_k0b7f"]
-[ext_resource type="Script" uid="uid://bdhmcbjqh2w03" path="res://resources/shop_item_data.gd" id="2_5bqgs"]
+[ext_resource type="Script" uid="uid://c5xh1in2ft6sx" path="res://ui/shop/scripts/shop_tab_data.gd" id="1_k0b7f"]
+[ext_resource type="Script" uid="uid://bdhmcbjqh2w03" path="res://ui/shop/scripts/shop_item_data.gd" id="2_5bqgs"]
 [ext_resource type="Resource" uid="uid://bdupql2cjhhnf" path="res://resources/shop/spells/sky.tres" id="3_5bqgs"]
 [ext_resource type="Resource" uid="uid://dymyg40tdkk44" path="res://resources/shop/spells/ocean.tres" id="4_nqus7"]
 [ext_resource type="Resource" uid="uid://3sl7gv35vn3j" path="res://resources/shop/spells/love.tres" id="5_uyl5n"]

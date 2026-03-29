@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ShopTabData" load_steps=7 format=3 uid="uid://dakxanv5e0h17"]
 
-[ext_resource type="Script" uid="uid://c5xh1in2ft6sx" path="res://resources/shop_tab_data.gd" id="1_cd56f"]
-[ext_resource type="Script" uid="uid://bdhmcbjqh2w03" path="res://resources/shop_item_data.gd" id="2_bkp2y"]
+[ext_resource type="Script" uid="uid://c5xh1in2ft6sx" path="res://ui/shop/scripts/shop_tab_data.gd" id="1_cd56f"]
+[ext_resource type="Script" uid="uid://bdhmcbjqh2w03" path="res://ui/shop/scripts/shop_item_data.gd" id="2_bkp2y"]
 [ext_resource type="Resource" uid="uid://cvrd48kji0imh" path="res://resources/shop/altars/tide.tres" id="3_ye160"]
 [ext_resource type="Resource" uid="uid://c32ljagkm4cey" path="res://resources/shop/altars/skypath.tres" id="4_cd56f"]
 [ext_resource type="Resource" uid="uid://cnac357dia404" path="res://resources/shop/altars/heartlink.tres" id="5_u3idy"]

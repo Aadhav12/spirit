@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=73 format=3 uid="uid://triat48wgm6j"]
 
-[ext_resource type="Texture2D" uid="uid://ce6wekkeo27i7" path="res://assets/house.png" id="1_2w0mr"]
-[ext_resource type="Texture2D" uid="uid://bv5hieifmwibp" path="res://assets/house_sky_full.png" id="2_mhy2y"]
-[ext_resource type="Texture2D" uid="uid://54jftbrhu76g" path="res://assets/house_ocean_full.png" id="3_mhy2y"]
-[ext_resource type="Texture2D" uid="uid://bahv3l6tkb82a" path="res://assets/house_death_full.png" id="4_mhy2y"]
-[ext_resource type="Texture2D" uid="uid://bpoqq2bfhgxx1" path="res://assets/house_love_full.png" id="5_diuj6"]
+[ext_resource type="Texture2D" uid="uid://ce6wekkeo27i7" path="res://assets/houses/house.png" id="1_2w0mr"]
+[ext_resource type="Texture2D" uid="uid://bv5hieifmwibp" path="res://assets/houses/house_sky_full.png" id="2_mhy2y"]
+[ext_resource type="Texture2D" uid="uid://54jftbrhu76g" path="res://assets/houses/house_ocean_full.png" id="3_mhy2y"]
+[ext_resource type="Texture2D" uid="uid://bahv3l6tkb82a" path="res://assets/houses/house_death_full.png" id="4_mhy2y"]
+[ext_resource type="Texture2D" uid="uid://bpoqq2bfhgxx1" path="res://assets/houses/house_love_full.png" id="5_diuj6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mhy2y"]
 
