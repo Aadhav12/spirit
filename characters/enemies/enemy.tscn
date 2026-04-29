@@ -1,33 +1,33 @@
-[gd_scene load_steps=15 format=3 uid="uid://740biwpeq44x"]
+[gd_scene load_steps=17 format=3 uid="uid://740biwpeq44x"]
 
-[ext_resource type="Script" uid="uid://b8h0wm3d7ik4o" path="res://characters/enemies/scripts/enemy.gd" id="1_j0258"]
-[ext_resource type="Texture2D" uid="uid://begyw555d3wfl" path="res://assets/characters/Spirits2.png" id="2_kj5xn"]
-[ext_resource type="Script" uid="uid://dspiaugxck6tr" path="res://general/scripts/node_state_machine.gd" id="3_j0258"]
-[ext_resource type="Script" uid="uid://bs1bif4j00s2l" path="res://characters/enemies/scripts/enemy_walk_state.gd" id="4_tn8v0"]
-[ext_resource type="PackedScene" uid="uid://bmyiyfijprt0j" path="res://components/scenes/attack_component.tscn" id="5_kvwyk"]
+[ext_resource type="Script" uid="uid://b8h0wm3d7ik4o" path="res://characters/enemies/scripts/enemy.gd" id="1_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://begyw555d3wfl" path="res://assets/characters/Spirits2.png" id="2_5uy6h"]
+[ext_resource type="PackedScene" uid="uid://dm6knicxxwcqk" path="res://components/scenes/damage_component.tscn" id="5_c4w8v"]
+[ext_resource type="PackedScene" uid="uid://du1xvua1tfsso" path="res://components/scenes/knockback_component.tscn" id="6_bi512"]
+[ext_resource type="PackedScene" uid="uid://d4wu71esethm" path="res://components/scenes/navigation_component.tscn" id="7_wor85"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
-atlas = ExtResource("2_kj5xn")
+atlas = ExtResource("2_5uy6h")
 region = Rect2(192, 160, 32, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
-atlas = ExtResource("2_kj5xn")
+atlas = ExtResource("2_5uy6h")
 region = Rect2(224, 160, 32, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
-atlas = ExtResource("2_kj5xn")
+atlas = ExtResource("2_5uy6h")
 region = Rect2(64, 160, 32, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_md484"]
-atlas = ExtResource("2_kj5xn")
+atlas = ExtResource("2_5uy6h")
 region = Rect2(96, 160, 32, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ipns3"]
-atlas = ExtResource("2_kj5xn")
+atlas = ExtResource("2_5uy6h")
 region = Rect2(128, 160, 32, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
-atlas = ExtResource("2_kj5xn")
+atlas = ExtResource("2_5uy6h")
 region = Rect2(160, 160, 32, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w8i8w"]
@@ -75,12 +75,17 @@ animations = [{
 radius = 8.0
 height = 82.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwavj"]
-radius = 11.0
-height = 88.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vt6o"]
+height = 90.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wor85"]
+height = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvkkf"]
+radius = 225.73657
 
 [node name="Enemy" type="CharacterBody2D"]
-script = ExtResource("1_j0258")
+script = ExtResource("1_5uy6h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.49019608)
@@ -92,23 +97,37 @@ autoplay = "walk_front"
 position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_5uy6h")
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
-script = ExtResource("3_j0258")
-initial_node_state = NodePath("Walk")
-
-[node name="Walk" type="Node" parent="State Machine" node_paths=PackedStringArray("animated_sprite_2D", "enemy", "agent")]
-script = ExtResource("4_tn8v0")
-animated_sprite_2D = NodePath("../../AnimatedSprite2D")
-enemy = NodePath("../..")
-agent = NodePath("../../NavigationAgent2D")
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 navigation_layers = 2
+avoidance_enabled = true
+radius = 4.0
 debug_enabled = true
 
-[node name="Attack Component" parent="." instance=ExtResource("5_kvwyk")]
+[node name="Damage Component" parent="." instance=ExtResource("5_c4w8v")]
+damage_layer = 1
+force = 250.0
+time = 0.2
 
-[node name="Attack Component CollisionShape2D" type="CollisionShape2D" parent="Attack Component"]
-position = Vector2(1, 0)
-shape = SubResource("CapsuleShape2D_xwavj")
-debug_color = Color(0.7488966, 0.38120076, 0.67463785, 0.41960785)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Component"]
+position = Vector2(1, -1)
+shape = SubResource("CapsuleShape2D_3vt6o")
+debug_color = Color(0.8120858, 0.34903654, 0.56710654, 0.41960785)
+
+[node name="Knockback Component" parent="." node_paths=PackedStringArray("character") instance=ExtResource("6_bi512")]
+character = NodePath("..")
+damage_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knockback Component"]
+position = Vector2(1, -2)
+shape = SubResource("CapsuleShape2D_wor85")
+debug_color = Color(0.59659815, 0.41050893, 1.92523e-07, 0.41960785)
+
+[node name="Navigation Component" parent="." node_paths=PackedStringArray("animated_sprite_2D", "character", "agent") instance=ExtResource("7_wor85")]
+damage_layer = 1
+animated_sprite_2D = NodePath("../AnimatedSprite2D")
+character = NodePath("..")
+agent = NodePath("../NavigationAgent2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Navigation Component"]
+shape = SubResource("CircleShape2D_yvkkf")
+debug_color = Color(0.2681013, 0.61413205, 0.4462492, 0.41960785)

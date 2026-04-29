@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=4 uid="uid://dwc27l2ain511"]
+[gd_scene load_steps=5 format=4 uid="uid://dwc27l2ain511"]
 
 [ext_resource type="TileSet" uid="uid://triat48wgm6j" path="res://resources/house_tilemap.tres" id="1_f0ctx"]
+[ext_resource type="PackedScene" uid="uid://cebgvtextrpgd" path="res://components/scenes/health_component.tscn" id="2_fuppa"]
+[ext_resource type="PackedScene" uid="uid://dm6knicxxwcqk" path="res://components/scenes/damage_component.tscn" id="3_y2ffc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2ffc"]
+size = Vector2(264, 232)
 
 [node name="Village Hall" type="Node2D"]
 
@@ -11,3 +16,23 @@ tile_set = ExtResource("1_f0ctx")
 [node name="Furniture" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAAIAAAADAAMAAAAHAAIAAAADAAMAAAABAAEAAAAEAAMAAAAHAAEAAAAEAAMAAAABAAQAAAAEAAMAAAACAAQAAAAEAAMAAAADAAQAAAAEAAMAAAAFAAQAAAAEAAMAAAAGAAQAAAAEAAMAAAAHAAQAAAAEAAMAAAA=")
 tile_set = ExtResource("1_f0ctx")
+
+[node name="Health Component" parent="." node_paths=PackedStringArray("node") instance=ExtResource("2_fuppa")]
+damage_layer = 1
+node = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Health Component"]
+position = Vector2(144, 113)
+shape = SubResource("RectangleShape2D_y2ffc")
+debug_color = Color(0.8663791, 0.24254769, 0.65429574, 0.41960785)
+
+[node name="Damage Component" parent="." instance=ExtResource("3_y2ffc")]
+attack_damage = 0
+damage_layer = 2
+force = 150.0
+time = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Component"]
+position = Vector2(144, 113)
+shape = SubResource("RectangleShape2D_y2ffc")
+debug_color = Color(0.6507406, 0.5058353, 0.3463028, 0.41960785)
