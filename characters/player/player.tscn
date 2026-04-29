@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://g12yql2ei6ao"]
+[gd_scene load_steps=28 format=3 uid="uid://g12yql2ei6ao"]
 
 [ext_resource type="Script" uid="uid://bmx38pb4qwb2t" path="res://characters/player/scripts/player.gd" id="1_e80uo"]
 [ext_resource type="Texture2D" uid="uid://bhri6mt1t0qob" path="res://assets/characters/Spirits.png" id="2_qlg0r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dkcfcuj4muxs8" path="res://characters/player/scripts/player_idle_state.gd" id="3_kne1u"]
 [ext_resource type="Script" uid="uid://dv48fhvujvwaq" path="res://characters/player/scripts/player_walk_state.gd" id="5_cxr5p"]
 [ext_resource type="PackedScene" uid="uid://cebgvtextrpgd" path="res://components/scenes/health_component.tscn" id="6_c6leb"]
+[ext_resource type="PackedScene" uid="uid://du1xvua1tfsso" path="res://components/scenes/knockback_component.tscn" id="7_dirf7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("2_qlg0r")
@@ -170,6 +171,10 @@ height = 66.0
 radius = 13.0
 height = 72.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idpv6"]
+radius = 13.0
+height = 72.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_e80uo")
 
@@ -196,10 +201,20 @@ script = ExtResource("5_cxr5p")
 player = NodePath("../..")
 animated_sprite_2D = NodePath("../../AnimatedSprite2D")
 
-[node name="Health Component" parent="." instance=ExtResource("6_c6leb")]
+[node name="Health Component" parent="." node_paths=PackedStringArray("node") instance=ExtResource("6_c6leb")]
 damage_layer = 1
+node = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Health Component"]
 position = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_dirf7")
 debug_color = Color(0.7108213, 0.4106238, 0.68209577, 0.41960785)
+
+[node name="Knockback Component" parent="." node_paths=PackedStringArray("character") instance=ExtResource("7_dirf7")]
+character = NodePath("..")
+damage_layer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knockback Component"]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_idpv6")
+debug_color = Color(0.55195916, 0.5572418, 0.24052262, 0.41960785)

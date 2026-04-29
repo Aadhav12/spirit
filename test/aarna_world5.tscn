@@ -72,6 +72,7 @@ position = Vector2(311, 163)
 [node name="Player#Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_lpqjw")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("player", "world") instance=ExtResource("13_lpqjw")]
 position = Vector2(225, 207)
 player = NodePath("../Player")
+world = NodePath("..")
